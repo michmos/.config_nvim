@@ -11,12 +11,6 @@ return {
 		end,
 		opts = {
 				autoformat = false,
-				servers = {
-					clangd = {
-						cmd = { "clangd", "--include-dir=inc", "--include-dir=include" },
-						root_dir = require'lspconfig'.util.root_pattern('.git'),
-					}
-			}
 		},
 	},
 }
