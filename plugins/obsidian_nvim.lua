@@ -24,19 +24,13 @@ return {
         path = "~/pCloudDrive/obsidian",
       },
     },
+
   	templates = {
   	    folder = "~/pCloudDrive/obsidian/Templates/",
   	    date_format = "%Y-%m-%d-%a",
   	    time_format = "%H:%M",
   	},
-	-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-  	completion = {
-    -- Set to false to disable completion.
-    nvim_cmp = true,
-    -- Trigger completion at 2 chars.
-    min_chars = 2,
-	},
-	disable_frontmatter = true,
+
 	-- dailies
 	daily_notes = {
 		folder = "3 Daily",
@@ -49,5 +43,28 @@ return {
 		-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
 		template = "Templates/dailyToDo.md"
 	},
+
+	-- Optional, if you keep notes in a specific subdirectory of your vault.
+  	notes_subdir = "0 Zettelkasten",
+	-- Where to put new notes. Valid options are
+  	--  * "current_dir" - put new notes in same directory as the current buffer.
+  	--  * "notes_subdir" - put new notes in the default notes subdirectory.
+	new_notes_location = "notes_subdir",
+
+	-- new notes title
+	note_path_func = function(spec)
+		local path = spec.dir / spec.title
+		return path:with_suffix(".md")
+	end,
+
+	-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
+  	completion = {
+    -- Set to false to disable completion.
+    nvim_cmp = true,
+    -- Trigger completion at 2 chars.
+    min_chars = 2,
+	},
+
+	disable_frontmatter = true,
   },
 }
